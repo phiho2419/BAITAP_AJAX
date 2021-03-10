@@ -82,10 +82,10 @@ document.querySelector('#themNhanVien').onclick = function () {
     })
 
     promise.then(function (result) {
-        console.log(result.data);
-        renderTable(result);
+        console.log(result);
+        renderNhanVien();
     })
-    promise.then(function (error) {
+    promise.catch(function (error) {
         console.log(error.response);
     })
 }
