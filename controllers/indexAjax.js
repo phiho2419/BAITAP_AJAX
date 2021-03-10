@@ -83,8 +83,7 @@ document.querySelector('#themNhanVien').onclick = function () {
 
     promise.then(function (result) {
         console.log(result.data);
-        renderTable();
-        window.location.reload();
+        renderTable(result);
     })
     promise.then(function (error) {
         console.log(error.response);
@@ -117,10 +116,13 @@ window.chinhSuaNhanVien = function (maNhanVien) {
         console.log(result.data);
         var nv = result.data;
         document.querySelector('#maNhanVien').value = nv.maNhanVien;
-        document.querySelector('#tenNhanVien').value = nv.tenNhanVien;
-        document.querySelector('#chucVu').value = nv.chucVu;
+        document.querySelector('#tenNhanVien').value = nv.tenNhanVien;    
         document.querySelector('#luongCoBan').value = nv.luongCoBan;
         document.querySelector('#soGioLam').value = nv.soGioLamTrongThang;
+
+        var arrOption = document.querySelector('#chucVu').options;
+        var slChucVu = document.querySelector('#chucVu');
+        arrOption[slChucVu.selectedIndex].innerHTML = nv.chucVu;
     })
 
     promise.catch(function (error) {
